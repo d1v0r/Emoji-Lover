@@ -6,6 +6,11 @@
 //
 
 import SwiftUI
+import AudioToolbox
+
+func playSystemClick() {
+    AudioServicesPlaySystemSound(1104)
+}
 
 enum Emoji: String, CaseIterable{
     case 😀, 😍, 😘, 😎, 😈
@@ -26,7 +31,9 @@ struct ContentView: View {
                 }
                 .pickerStyle(.segmented)
             }
+            .onChange(of: selection) { playSystemClick() }
             .navigationTitle("Emoji Lovers")
+            .navigationBarTitleDisplayMode(.inline)
             .padding()
         }
     }
